@@ -15,7 +15,7 @@ ENTRY(_Reset)
 SECTIONS
 {
 . = 0x10000;
-.startup . : { pi_arm.o(.text) }
+.startup . : { pi.o(.text) }
 .text : { *(.text) }
 .data : { *(.data) }
 .bss : { *(.bss) }
