@@ -12,28 +12,28 @@ static void uart_print_char(char chr)
 }
 
 /* Send char array to UART */
-static void uart_print(const char *s)
+static void uart_print(const char *str)
 {
-    while(*s != 0) {
-        uart_print_char(*s);
-        s++;
+    while(*str != 0) {
+        uart_print_char(*str);
+        str++;
     }
 }
 
 /* Send decimal interer to UART */
-static void uart_print_int(int score)
+static void uart_print_int(int val)
 {
 
     int div;
-    for (div = 1; div <= score; div *= 10)
+    for (div = 1; div <= val; div *= 10)
         ;
 
     do
     {
         div /= 10;
-        uart_print_char((score / div)+0x30);
-        score %= div;
-    } while (score);
+        uart_print_char((val / div) + 0x30);
+        val %= div;
+    } while (val);
 }
 
 /* Main entry point */
@@ -41,7 +41,7 @@ void main()
 {
     uart_print("Calculating Pi...\n");
 
-    int r[2800 + 1];
+    int r[2800 + 1];    // Array utilizes 11.2Kb in stack! Setup appropriate count of stack memory in linker script
     int i, k;
     int b, d;
     int c = 0;
