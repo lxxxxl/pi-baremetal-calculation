@@ -19,6 +19,6 @@ SECTIONS
 .text : { *(.text) }
 .data : { *(.data) }
 .bss : { *(.bss) }
-. = . + 0x1000; /* move by 4kbyte (our stack memory) */
+. = . + 0x4000; /* move by 16kbyte (our stack memory) */
 stack_top = .;
 }
